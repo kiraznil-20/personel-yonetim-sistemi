@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personel Yönetim Sistemi</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='personel.css') }}">
+</head>
+<body>
+
+    <div class="kutu">
+
+        <h1>Personel Yönetim Sistemi</h1>
+        <p style="text-align: right;">
+    <a href="{{ url_for('cikis') }}">Çıkış Yap</a>
+</p>
+
+        <h2>Yeni Personel Ekle</h2>
+
+        <form action="/personel-ekle" method="POST">
+            <input type="text" name="ad" placeholder="Ad" required>
+            <input type="text" name="soyad" placeholder="Soyad" required>
+            <input type="text" name="bolum" placeholder="Bölüm" required>
+
+            <button type="submit">Personel Ekle</button>
+        </form>
+
+        <hr>
+
+        <h2>Personel Listesi</h2>
+
+        <form action="/" method="GET">
+            <input
+                type="text"
+                name="arama"
+                placeholder="Ad, soyad veya bölüm ara"
+                value="{{ arama }}"
+            >
+
+            <button type="submit">Ara</button>
+
+            <a href="/">Tümünü Göster</a>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Ad</th>
+                    <th>Soyad</th>
+                    <th>Bölüm</th>
+                    <th>İşlem</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for personel in personeller %}
+                <tr>
+                    <td>{{ personel[0] }}</td>
+                    <td>{{ personel[1] }}</td>
+                    <td>{{ personel[2] }}</td>
+                    <td>{{ personel[3] }}</td>
+
+                    <td>
+                        <a href="/personel-duzenle/{{ personel[0] }}">
+                            Düzenle
+                        </a>
+
+                        <form
+                            action="/personel-sil/{{ personel[0] }}"
+                            method="POST"
+                            style="display: inline;"
+                        >
+                            <button
+    class="sil-buton"
+    type="submit"
+    onclick="return confirm('Bu personeli silmek istediğine emin misin?')"
+>
+    Sil
+</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+</html>

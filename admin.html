@@ -1,0 +1,153 @@
+```html
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Bilgi İşlem Yönetim Paneli</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+    <header>
+
+        <h1>
+            Bilgi İşlem Yönetim Paneli
+        </h1>
+
+        <p>
+            Destek taleplerini yönetin
+        </p>
+
+        <p id="adminUser"></p>
+
+        <button id="logoutButton">
+            Çıkış Yap
+        </button>
+
+    </header>
+
+
+    <main>
+
+        <section class="tickets">
+
+            <h2>
+                Tüm Destek Talepleri
+            </h2>
+
+
+            <div class="statistics">
+
+                <div class="stat-card">
+
+                    <h3 id="totalTickets">0</h3>
+
+                    <p>
+                        Toplam Talep
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <h3 id="waitingTickets">0</h3>
+
+                    <p>
+                        Bekliyor
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <h3 id="processingTickets">0</h3>
+
+                    <p>
+                        İşlemde
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <h3 id="solvedTickets">0</h3>
+
+                    <p>
+                        Çözüldü
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="filters">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Talep ara..."
+                >
+
+
+                <select id="filterStatus">
+
+                    <option value="Tümü">
+                        Tüm Durumlar
+                    </option>
+
+                    <option value="Bekliyor">
+                        Bekliyor
+                    </option>
+
+                    <option value="İşlemde">
+                        İşlemde
+                    </option>
+
+                    <option value="Çözüldü">
+                        Çözüldü
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div id="ticketList">
+
+                <p class="empty">
+                    Henüz destek talebi oluşturulmadı.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script
+        src="{{ url_for('static', filename='admin.js') }}"
+    ></script>
+
+</body>
+
+</html>
+```

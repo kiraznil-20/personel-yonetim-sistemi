@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Personel Düzenle</title>
+</head>
+<body>
+
+    <h1>Personel Düzenle</h1>
+
+    <form method="POST">
+        <p>
+            Ad:
+            <input type="text" name="ad" value="{{ personel[1] }}" required>
+        </p>
+
+        <p>
+            Soyad:
+            <input type="text" name="soyad" value="{{ personel[2] }}" required>
+        </p>
+
+        <p>
+            Bölüm:
+            <input type="text" name="bolum" value="{{ personel[3] }}" required>
+        </p>
+
+        <button type="submit">Kaydet</button>
+    </form>
+
+    <br>
+
+    <a href="/">Listeye geri dön</a>
+
+</body>
+</html>
